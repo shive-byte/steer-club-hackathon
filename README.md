@@ -29,7 +29,9 @@ An interactive, doctor-led nutrition check tailored for everyday Indian meals. U
 ### ⏩ Next Step
 1. **Configure Database**: Add your Neon PostgreSQL connection string to `.env` (`DATABASE_URL=...`).
 2. **Start Dev Server**: Run `npm run dev` and open `http://localhost:8080`.
-3. **Deploy**: Deploy to Cloudflare Workers / Nitro hosting via `npm run build`.
+3. **Deploy to GitHub Pages**: Push changes to `main`. Enable **Settings > Pages > Build and deployment: Source -> GitHub Actions** on GitHub. The `.github/workflows/deploy-gh-pages.yml` workflow will automatically build and publish the site.
+4. **Deploy SSR (Cloudflare Workers / Nitro)**: Run `npm run build` to output the full Cloudflare worker bundle.
+
 
 ---
 
