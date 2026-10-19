@@ -30,3 +30,25 @@ An interactive, doctor-led nutrition check tailored for everyday Indian meals. U
 1. **Configure Database**: Add your Neon PostgreSQL connection string to `.env` (`DATABASE_URL=...`).
 2. **Start Dev Server**: Run `npm run dev` and open `http://localhost:8080`.
 3. **Deploy**: Deploy to Cloudflare Workers / Nitro hosting via `npm run build`.
+
+---
+
+### 📚 Calculation Sources & Methodology
+The personalized nutritional estimates and recommended daily intake reference targets in [foods.ts](file:///d:/steer%20hackathon/steer-src/src/lib/foods.ts) are computed using the following established scientific guidelines:
+
+1. **Basal Metabolic Rate (BMR) & Daily Calorie Estimation**:
+   - **Mifflin-St Jeor Equation**: Recognized as one of the most reliable predictive equations for resting metabolic rate in clinical settings:
+     $$\text{BMR (men)} = 10 \times \text{weight (kg)} + 6.25 \times \text{height (cm)} - 5 \times \text{age} + 5$$
+     $$\text{BMR (women)} = 10 \times \text{weight (kg)} + 6.25 \times \text{height (cm)} - 5 \times \text{age} - 161$$
+   - Total daily energy expenditure (TDEE) is calculated by multiplying BMR by physical activity factors ($1.2$ sedentary to $1.9$ highly active).
+   - *Source*: Mifflin, M. D., et al. (1990). *"A new predictive equation for resting energy expenditure in healthy individuals."* The American Journal of Clinical Nutrition, 51(2), 241-247.
+
+2. **Recommended Dietary Allowances (RDA) for Indians (Protein & Fibre)**:
+   - **Protein Requirements**: Calibrated at **$\sim 0.83 \text{ g/kg body weight/day}$** as per the revised ICMR-NIN nutritional norms for Indian adults.
+   - **Dietary Fibre**: Set at a guideline of **$\sim 30 \text{ g per } 2000 \text{ kcal}$** to support glycemic control and cardiovascular health.
+   - *Source*: **ICMR-NIN (2020)**. *"Nutrient Requirements for Indians — Recommended Dietary Allowances (RDA) and Estimated Average Requirements (EAR)"*, National Institute of Nutrition, Indian Council of Medical Research.
+
+3. **Food Composition & Portion Estimates**:
+   - Macronutrient profiles (calories, protein, carbs, fat, and dietary fibre) for common Indian meal items (rotis, parathas, dal, paneer sabzi, curd, chicken curry) are adapted from:
+     - **IFCT 2017**: Longvah, T., et al. *"Indian Food Composition Tables"*, National Institute of Nutrition (ICMR).
+
